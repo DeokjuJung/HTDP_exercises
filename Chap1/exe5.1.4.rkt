@@ -1,0 +1,26 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname exe5.1.4) (read-case-sensitive #t) (teachpacks ((lib "guess.rkt" "teachpack" "htdp"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "guess.rkt" "teachpack" "htdp")) #f)))
+;; what-kind : number number number -> symbol
+;; to determine how many solutions the quadratic equation has
+(define (what-kind a b c)
+  (cond
+    [(= a 0) 'degenerate]
+    [(> (discriminant a b c) 0) 'two]
+    [(= (discriminant a b c) 0) 'one]
+    [(< (discriminant a b c) 0) 'none]))
+
+;; disciminant : number number number -> number
+;; computes the discriminant with coefficients
+(define (discriminant a b c)
+  (- (sqr b) (* 4 a c)))
+
+;; Examples as tests
+(symbol=? (what-kind 0 2 3) 'degenerate)
+(symbol=? (what-kind 1 2 1) 'one)
+(symbol=? (what-kind 1 2 2) 'none)
+(symbol=? (what-kind 1 3 2) 'two)
+
+(= (discriminant 1 2 1) 0)
+(= (discriminant 1 2 2) -4)
+(= (discriminant 1 3 2) 1)

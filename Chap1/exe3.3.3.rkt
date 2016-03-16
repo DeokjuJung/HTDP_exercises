@@ -1,0 +1,24 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname exe3.3.3) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+;; area-cylinder : number number -> number
+;; to compute the surface area of a cylinder, given the radius
+;; of the cylinder's base disk and its hegiht
+(define (area-cylinder radius height)
+  (+ (* 2 (area-of-disk radius))
+     (* (circumference-of-disk radius) height)))
+
+;; area-of-disk : number -> number
+;; to compute the area of disk given the radius
+(define (area-of-disk radius)
+  (* pi radius radius))
+
+;; circumstance-of-disk : number -> number
+;; to compute the circumstance of a disk
+(define (circumference-of-disk radius)
+  (* 2 pi radius))
+
+;; examples as tests
+(area-of-disk 1) "should be" pi
+(circumference-of-disk 1) "should be" (* 2 pi)
+(area-cylinder 1 2) "should be" (* 6 pi)

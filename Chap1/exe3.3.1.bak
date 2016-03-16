@@ -1,0 +1,26 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname exe3.3.1) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+;; inches->cm : number -> number
+;; to convert inches to cm
+(define (inches->cm number) ...)
+
+;; feet->inches : number -> number
+;; to convert feet to inches
+(define (feet->inches number) ...)
+
+;; yards->feet : number -> number
+;; to convert yards to feet
+(define (yards->feet number) ... )
+
+;; rods->yards : number -> number
+;; to convert rods to yards
+(define (rods->yards number) ... )
+
+;; furlongs->rods : number -> number
+;; to convert furlons to rods
+(define (furlongs->rods number) ... )
+
+;; miles->furlongs : number -> number
+;; to convert miles to furlongs
+(define (miles->furlongs) ... )

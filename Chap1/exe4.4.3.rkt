@@ -1,0 +1,32 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname exe4.4.3) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+;; pay-back : number -> number
+;; compute the pay-back amount for a given charge amount
+
+;; EXAMPLES
+;; the pay-back for $400 is $1
+;; the pay-back for $1400 is $5.75
+;; the pay-back for $2000 is $10
+;; the pay-back for $2600 is $14.75
+
+;;(define (pay-back charge)
+;;  (cond
+;;    [(<= charge 500) (* charge .0025)]
+;;    [(<= charge 1500) (+ (* 500 .0025) (* (- charge 500) .005))]
+;;    [(<= charge 2500) (+ (* 500 .0025) (* 1000 .005) (* (- charge 1500) .0075))]
+;;    [else (+ (* 500 .0025) (* 1000 .005) (* 1000 .0075) (* (- charge 2500) .01))]))
+
+(define (pay-back charge)
+  (cond
+    [(<= charge 500) (* charge .0025)]
+    [(<= charge 1500) (+ (pay-back 500) (* (- charge 500) .005))]
+    [(<= charge 2500) (+ (pay-back 1500) (* (- charge 1500) .0075))]
+    [else (+ (pay-back 2500) (* (- charge 2500) .01))]))
+
+;; Test cases
+(= (pay-back 400) 1)
+(= (pay-back 1400) 5.75)
+(= (pay-back 2000) 10)
+(= (pay-back 2600) 14.75)
+

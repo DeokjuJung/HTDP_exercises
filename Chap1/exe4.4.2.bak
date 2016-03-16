@@ -1,0 +1,18 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname exe4.4.2) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+;; interest : number -> number
+;; to determine the actual amount of interest
+;; that the money earns in a year
+(define (interest amount)
+  (cond
+    [(<= amount 1000) (* amount .04)]
+    [(<= amount 5000) (* amount .045)]
+    [(> amount 5000) (* amount 0.05)]))
+
+;; examples
+(= (interest 500) 20)
+(= (interest 1000) 40)
+(= (interest 2000) 90)
+(= (interest 5000) 225)
+(= (interest 6000) 300)

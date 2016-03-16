@@ -1,0 +1,32 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname exe6.3.1) (read-case-sensitive #t) (teachpacks ((lib "guess.rkt" "teachpack" "htdp") (lib "master.rkt" "teachpack" "htdp") (lib "draw.rkt" "teachpack" "htdp"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "guess.rkt" "teachpack" "htdp") (lib "master.rkt" "teachpack" "htdp") (lib "draw.rkt" "teachpack" "htdp")) #f)))
+(define-struct movie (title producer))
+(define movie1 (make-movie 'JurasicPark 'Spilberg))
+(movie-title movie1)
+(movie-producer movie1)
+
+(define-struct boyfriend (name hair eyes phone))
+(define myBoy (make-boyfriend 'Tom 'Blonde 'Blue '010-223-2344))
+(boyfriend-name myBoy)
+(boyfriend-hair myBoy)
+(boyfriend-eyes myBoy)
+(boyfriend-phone myBoy)
+
+(define-struct cheerleader (name number))
+(define jane (make-cheerleader 'Jane 15))
+(cheerleader-name jane)
+(cheerleader-number jane)
+
+(define-struct CD (artist title price))
+(define myCD (make-CD 'Iyou '20years 20000))
+(CD-artist myCD)
+(CD-title myCD)
+(CD-price myCD)
+
+(define-struct sweater (material size producer))
+(define mySweater (make-sweater 'Wool 'XL 'Hazys))
+(sweater-material mySweater)
+(sweater-size mySweater)
+(sweater-producer mySweater)
+

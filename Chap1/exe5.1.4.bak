@@ -1,0 +1,23 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname exe5.1.4) (read-case-sensitive #t) (teachpacks ((lib "guess.rkt" "teachpack" "htdp"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "guess.rkt" "teachpack" "htdp")) #f)))
+;; check-guess3 : number  number number number -> symbol
+;; given three digits which forms guess and target,
+;; to determine a reply for the comparison guess and target
+(define (check-guess3 digit1 digit2 digit3 target)
+  (cond
+    [(< (make-guess digit1 digit2 digit3) target) 'TooSmall]
+    [(= (make-guess digit1 digit2 digit3) target) 'Perfect]
+    [(> (make-guess digit1 digit2 digit3) target) 'TooLarge]))
+
+;; make-guess : number number number -> number
+;; make number using three digits which orders from least to most
+;; significant
+(define (make-guess digit1 digit2 digit3)
+  (+ (* 100 digit3) (* 10 digit2) digit1))
+
+;; Tests
+(symbol=? (check-guess3 8 9 0 100) 'TooSmall)
+(symbol=? (check-guess3 0 0 1 100) 'Perfect)
+(symbol=? (check-guess3 5 0 1 100) 'TooLarge)
+(= (make-guess 1 2 3) 321)

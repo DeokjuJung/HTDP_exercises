@@ -1,0 +1,54 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname exe6.6.4) (read-case-sensitive #t) (teachpacks ((lib "guess.rkt" "teachpack" "htdp") (lib "master.rkt" "teachpack" "htdp") (lib "draw.rkt" "teachpack" "htdp"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "guess.rkt" "teachpack" "htdp") (lib "master.rkt" "teachpack" "htdp") (lib "draw.rkt" "teachpack" "htdp")) #f)))
+;; Data Analysis & Definitions:
+(define-struct circle (center radius color))
+
+;; A circle is a structure: (make-circle center radius color)
+;; where center is a posn structure, radius is a number and color is a symbol.
+
+#|
+;; Template:
+(define (fun-for-circle a-circle)
+ ... (circle-center a-circle) ...
+ ... (circle-radius a-circle) ...
+ ... (circle-color a-circle) ...)
+|#
+
+;; Contract: draw-a-circle : circle -> true
+
+;; Purpose: to draw a circle on the screen
+(define (draw-a-circle a-circle)
+  (draw-circle (circle-center a-circle)
+               (circle-radius a-circle)
+               (circle-color a-circle)))
+
+;; Tests:
+;;(start 300 300)
+;;(draw-a-circle (make-circle (make-posn 100 100) 10 'red))
+
+;; Contract: distance-between : posn posn -> number
+
+;; Purpose : to determine the distance between two posn
+(define (distance-between a b)
+  (sqrt (+ (sqr (- (posn-x a) (posn-x b)))
+           (sqr (- (posn-y a) (posn-y b))))))
+
+;; Tests:
+;;(distance-between (make-posn 10 10) (make-posn 13 14))
+;;"should be"
+;;5
+
+;; Contract: in-circle : circle posn -> boolean
+
+;; Purpose : to determine whether or not the pixel is inside the circle
+(define (in-circle c p)
+  (<= (distance-between (circle-center c) p) (circle-radius c)))
+         
+;; Tests:
+(in-circle (make-circle (make-posn 6 2) 1 'red) (make-posn 6 1.5))
+"should be"
+true
+(in-circle (make-circle (make-posn 6 2) 1 'red) (make-posn 8 6))
+"should be"
+false

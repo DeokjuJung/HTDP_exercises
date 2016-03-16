@@ -1,0 +1,26 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname exe4.2.1) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+;; is-between-3-7? : number -> boolean
+;; to determine whether n is between 3(exclusive) and 7(inclusive)
+(define (is-between-3-7? n)
+  (and (< 3 n) (<= n 7)))
+
+;; is-between-3-9? : number -> boolean
+;; to determine whether n is greater than or equal to 3
+;; and less than 9
+(define (is-between-3-9? n)
+  (and (<= 3 n) (< n 9)))
+
+;; is-between-1-3-or-between-9-11? : number -> boolean
+;; to determine whether n is between 1 and 3(exclusive)
+;; or is between 9 and 11(exclusive)
+(define (is-between-1-3-or-between-9-11? n)
+  (or (and (> n 1) (< n 3))
+      (and (> n 9) (< n 11))))
+
+;; is-under-1-or-over-3? : number -> boolean
+;; to determins whether n is less than 1
+;; or is greater than 3(exclusive)
+(define (is-under-1-or-over-3? n)
+  (or (< n 1) (> n 3)))

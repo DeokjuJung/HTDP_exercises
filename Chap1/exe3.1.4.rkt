@@ -1,0 +1,37 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname exe3.1.4) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+;; profit : number -> number
+;; to compute the profit as the difference between revenue and costs
+;; at some give ticket-price
+;; example : (profit 5.00) should produce 420
+;; example : (profit 4.00) should produce 675
+;; example : (profit 3.00) should produce 630
+(define (profit ticket-price)
+  (- (revenue ticket-price)
+     (cost ticket-price)))
+
+;; revenue : number -> number
+;; to compute the revenue, given ticket-price
+;; example : (revenue 5.00) should produce 600
+;; example : (revenue 4.00) should produce 1080
+;; example : (revenue 3.00) should produce 1260
+(define (revenue ticket-price)
+  (* (attendees ticket-price) ticket-price))
+
+;; cost : number -> number
+;; to compute the costs, given ticket-price
+;; example : (cost 5.00) should produce 180
+;; example : (cost 4.00) should produce 405
+;; example : (cost 3.00) should produce 630
+(define (cost ticket-price)
+  (* 1.50 (attendees ticket-price)))
+
+;; attendees : number -> number
+;; to compute the number of attendees, given ticket-price
+;; example : (attendees 5.00) should produce 120
+;; example : (attendees 4.00) should produce 270
+;; example : (attendees 3.00) should produce 420
+(define (attendees ticket-price)
+  (+ 120
+     (* (/ 15 0.10) (- 5.00 ticket-price))))
